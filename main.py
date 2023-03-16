@@ -25,7 +25,6 @@ model = models.Sequential([
     layers.Dense(10, activation='softmax')
 ])
 
-
 # Compile the model
 model.compile(optimizer='adam',
               loss='categorical_crossentropy',
@@ -37,3 +36,10 @@ model.fit(x_train, y_train, epochs=10, batch_size=32, validation_split=0.1)
 # Evaluate the model
 test_loss, test_acc = model.evaluate(x_test, y_test)
 print(f'Test accuracy: {test_acc}')
+
+# Save the model in HDF5 format
+model.save('mnist_model.h5')
+
+# Save the model in TensorFlow SavedModel format
+model.save('mnist_model_savedmodel')
+
