@@ -14,12 +14,17 @@ y_test = to_categorical(y_test, 10)
 
 # Build the model
 model = models.Sequential([
-    layers.Dense(128, activation='relu', input_shape=(28 * 28,)),
-    layers.Dropout(0.2),
+    layers.Dense(512, activation='relu', input_shape=(28 * 28,)),
+    layers.Dropout(0.3),
+    layers.Dense(256, activation='relu'),
+    layers.Dropout(0.3),
+    layers.Dense(128, activation='relu'),
+    layers.Dropout(0.3),
     layers.Dense(64, activation='relu'),
-    layers.Dropout(0.2),
+    layers.Dropout(0.3),
     layers.Dense(10, activation='softmax')
 ])
+
 
 # Compile the model
 model.compile(optimizer='adam',
